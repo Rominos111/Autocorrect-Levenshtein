@@ -1,3 +1,7 @@
+# ------------------------------
+# C
+# ------------------------------
+
 # Prerequisites
 *.d
 
@@ -50,3 +54,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# ------------------------------
+# Project
+# ------------------------------
+
+.idea
+cmake-build-debug
