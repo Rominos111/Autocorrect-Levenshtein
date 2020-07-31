@@ -113,3 +113,9 @@
 *.exe   binary
 *.out   binary
 *.app   binary
+
+# ------------------------------
+# Project
+# ------------------------------
+
+data/dict_fr binary
