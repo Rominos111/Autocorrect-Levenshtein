@@ -3,7 +3,22 @@
 
 #include "main.h"
 
-void getArgs(int argc, char** argv, char** dictPath, char** keyboardLayout) {
+void toUpper(char** mixed) {
+    char* up = malloc(sizeof(char) * (strlen(*mixed)+1));
+
+    int i = 0;
+
+    while ((*mixed)[i] != '\0') {
+        up[i] = (signed char) toupper((unsigned char) ((*mixed)[i]));
+        i++;
+    }
+
+    up[i] = '\0';
+
+    *mixed = up;
+}
+
+void getArgs(int argc, const char** argv, char** dictPath, char** keyboardLayout) {
     if (argc == 5) {
         // Pour chaque option (-d, -k, ...) on sauvegarde l'élément suivant (-d path, -k layout, ...), d'où argc-1
         for (int i=1; i<argc-1; i++) {
@@ -21,10 +36,10 @@ int main(int argc, char** argv) {
     char* dictPath = NULL;
     char* keyboardLayout = NULL;
 
-    getArgs(argc, argv, &dictPath, &keyboardLayout);
+    getArgs(argc, (const char **) argv, &dictPath, &keyboardLayout);
 
     if (dictPath != NULL && keyboardLayout != NULL) {
-
+        toUpper(&keyboardLayout);
     }
     else {
         return EXIT_FAILURE;
