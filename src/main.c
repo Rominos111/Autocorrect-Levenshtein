@@ -16,6 +16,8 @@ void toUpper(char** mixed) {
     up[i] = '\0';
 
     *mixed = up;
+
+    free(up);
 }
 
 void getArgs(int argc, const char** argv, char** dictPath, char** keyboardLayout) {
