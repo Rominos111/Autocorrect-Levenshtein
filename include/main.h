@@ -5,16 +5,14 @@
 #define AUTOCORRECT_LEVENSHTEIN_MAIN_H
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
+#include <stdbool.h>
 
-/**
- * Transforme une chaine avec une casse mixte en chaine majuscule
- *
- * @param mixed Chaine à transformer
- */
-void toUpper(char** mixed);
+#include "levenshtein.h"
+#include "utils.h"
+#include "dictionary.h"
+
+#define EXIT_NO_KEYBOARD_LAYOUT 100
+#define EXIT_NO_DICT_PATH 101
 
 /**
  * Transforme les paramètres de programme en variables
