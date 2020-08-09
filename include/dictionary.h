@@ -8,13 +8,16 @@
 #include <stdio.h>
 
 #include "queue.h"
+#include "utils.h"
 
 /**
  * Récupère le flot d'entrée pour le transformer en liste de string en coupant entre chaque mot
  *
  * @param input Adresse du tableau 2D
- * @param size Nombre de mots
+ * @param nbWords Nombre de mots
  */
-void retrieveStdin(char*** input, int* size);
+void retrieveStdin(char*** input, int* nbWords);
+
+void applyDictionary(char** input, int nbWords, char* dictPath);
 
 #endif //AUTOCORRECT_LEVENSHTEIN_DICTIONARY_H

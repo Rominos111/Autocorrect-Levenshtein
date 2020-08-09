@@ -3,7 +3,7 @@
 
 #include "dictionary.h"
 
-void retrieveStdin(char*** input, int* size) {
+void retrieveStdin(char*** input, int* nbWords) {
     Queue allQ = createQueue();
     Queue wordQ = createQueue();
 
@@ -14,7 +14,7 @@ void retrieveStdin(char*** input, int* size) {
             wordQ = createQueue();
         }
         else if (ch != '\r') {
-            char* otherCh = malloc(sizeof(void*));
+            char* otherCh = malloc(sizeof(char*));
             *otherCh = ch;
             enqueue((void*) otherCh, wordQ);
         }
@@ -43,9 +43,14 @@ void retrieveStdin(char*** input, int* size) {
         n++;
     }
 
-    *size = n;
+    *nbWords = n;
+}
 
-    for (int i=0; i<*size; i++) {
-        printf("%s\n", (*input)[i]);
+void applyDictionary(char** input, int nbWords, char* dictPath) {
+    FILE* file = fopen(dictPath, "r");
+
+    if (file == NULL) {
+        fprintf(stderr, "File does not exists: %s\n", dictPath);
+        exit(EXIT_FILE_DOES_NOT_EXISTS);
     }
 }

@@ -19,10 +19,12 @@ void getArgs(int argc, const char** argv, char** dictPath, char** keyboardLayout
 
     if (*dictPath == NULL) {
         fprintf(stderr, "Path to dict missing\n");
+        exit(EXIT_NO_DICT_PATH);
     }
 
     if (*keyboardLayout == NULL) {
         fprintf(stderr, "Keyboard layout missing\n");
+        exit(EXIT_NO_KEYBOARD_LAYOUT);
     }
 }
 
@@ -31,25 +33,19 @@ int main(int argc, char** argv) {
     char* keyboardLayout = NULL;
 
     getArgs(argc, (const char **) argv, &dictPath, &keyboardLayout);
+    toUpper(&keyboardLayout);
 
-    if (dictPath == NULL) {
-        return EXIT_NO_DICT_PATH;
+    char** input = NULL;
+    int nbWords;
+
+    retrieveStdin(&input, &nbWords);
+    applyDictionary(input, nbWords, dictPath);
+
+    for (int i=0; i<nbWords; i++) {
+        free(input[i]);
     }
-    else if (keyboardLayout == NULL) {
-        return EXIT_NO_KEYBOARD_LAYOUT;
-    }
-    else {
-        toUpper(&keyboardLayout);
 
-        char** input = NULL;
-        int size;
-
-        retrieveStdin(&input, &size);
-
-        for (int i=0; i<size; i++) {
-            printf("%s\n", input[i]);
-        }
-    }
+    free(input);
 
     return EXIT_SUCCESS;
 }
