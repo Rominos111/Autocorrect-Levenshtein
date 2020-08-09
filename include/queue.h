@@ -15,7 +15,7 @@ struct _QueueElem {
     /**
      * Valeur de l'élément
      */
-    void* value;
+    const void* value;
 
     /**
      * Élément suivant

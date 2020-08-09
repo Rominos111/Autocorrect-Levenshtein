@@ -11,7 +11,7 @@ uint min3(uint a, uint b, uint c) {
     return min(min(a, b), c);
 }
 
-uint levenshteinDistance(const char* word, const char* dictWord) {
+uint levenshteinDistance(const char* const word, const char* const dictWord) {
     const uint m = strlen(dictWord);
     const uint n = strlen(word);
 
@@ -36,7 +36,7 @@ uint levenshteinDistance(const char* word, const char* dictWord) {
 
     for (uint j = 1; j < n+1; j++) {
         for (uint i = 1; i < m+1; i++) {
-            unsigned char cost = (word[i-1] == dictWord[j-1]) ? 0 : 1;
+            const unsigned char cost = (word[i-1] == dictWord[j-1]) ? 0 : 1;
 
             tab[i][j] = min3(
                     tab[i-1][j] + 1, // Suppression
