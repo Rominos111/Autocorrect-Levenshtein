@@ -2,11 +2,19 @@
 // Created by Romain on 01/08/2020.
 
 #include <stdio.h>
+
 #include "queue.h"
 
 Queue createQueue() {
     Queue queue = malloc(sizeof(struct _QueueStruct));
+    return resetQueue(queue);
+}
 
+void deleteQueue(Queue queue) {
+    free(queue);
+}
+
+Queue resetQueue(Queue queue) {
     queue->size = 0;
     queue->first = NULL;
     queue->last = NULL;
@@ -14,14 +22,10 @@ Queue createQueue() {
     return queue;
 }
 
-void deleteQueue(Queue queue) {
-    free(queue);
-}
-
-Queue enqueue(Queue queue, void* value) {
+Queue enqueue(void* item, Queue queue) {
     struct _QueueElem* node = malloc(sizeof(struct _QueueElem));
 
-    node->value = value;
+    node->value = item;
     node->next = NULL;
 
     if (isEmpty(queue)) {
@@ -67,7 +71,7 @@ unsigned int getSize(Queue queue) {
     return queue->size;
 }
 
-void printQueue(Queue queue) {
+void printQueueAsInt(Queue queue) {
     struct _QueueElem* elem = queue->first;
 
     printf("->");
@@ -78,4 +82,29 @@ void printQueue(Queue queue) {
     }
 
     printf("-\n");
+}
+
+void printQueueAsChar(Queue queue) {
+    struct _QueueElem* elem = queue->first;
+
+    while (elem != NULL) {
+        // Conversion de void* à char
+        char c = *((char*) elem->value);
+
+        if (c == '\r') {
+            // Attention, les CR font revenir putchar à la ligne, écrasant ainsi les caractères précédents
+            printf("\\r");
+        }
+        else if (c == '\n') {
+            // Traitement facultatif des LF
+            printf("\\n");
+        }
+        else {
+            putchar(c);
+        }
+
+        elem = elem->next;
+    }
+
+    putchar('\n');
 }

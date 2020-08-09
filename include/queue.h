@@ -63,14 +63,23 @@ Queue createQueue();
 void deleteQueue(Queue queue);
 
 /**
+ * Réinitialise une Queue en la modifiant
+ *
+ * @param queue Queue
+ *
+ * @return Queue réinitialisée
+ */
+Queue resetQueue(Queue queue);
+
+/**
  * Ajoute un élément à la Queue
  *
- * @param queue Queue, sera modifiée
  * @param item Item à ajouter
+ * @param queue Queue, sera modifiée
  *
  * @return Queue modifiée
  */
-Queue enqueue(Queue queue, void* item);
+Queue enqueue(void* item, Queue queue);
 
 /**
  * Retire un élément
@@ -106,6 +115,13 @@ unsigned int getSize(Queue queue);
  *
  * @param queue Queue
  */
-void __attribute_deprecated__ printQueue(Queue queue);
+void printQueueAsInt(Queue queue);
+
+/**
+ * Affiche une Queue en considérant ses éléments comme des char
+ *
+ * @param queue Queue
+ */
+void printQueueAsChar(Queue queue);
 
 #endif //AUTOCORRECT_LEVENSHTEIN_QUEUE_H
