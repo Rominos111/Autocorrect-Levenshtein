@@ -8,6 +8,11 @@
 #include <string.h>
 #include <ctype.h>
 
+#define EXIT_NO_KEYBOARD_LAYOUT 100
+#define EXIT_NO_DICT_PATH 101
+
+#define EXIT_FILE_DOES_NOT_EXISTS 201
+
 /**
  * Facilité d'écriture de unsigned int
  */

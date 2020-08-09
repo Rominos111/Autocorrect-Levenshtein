@@ -11,9 +11,6 @@
 #include "utils.h"
 #include "dictionary.h"
 
-#define EXIT_NO_KEYBOARD_LAYOUT 100
-#define EXIT_NO_DICT_PATH 101
-
 /**
  * Transforme les paramètres de programme en variables
  *
