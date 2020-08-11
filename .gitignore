@@ -60,5 +60,5 @@ dkms.conf
 # ------------------------------
 
 .idea
-cmake-build-debug
+cmake-*
 _*
