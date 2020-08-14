@@ -118,4 +118,4 @@
 # Project
 # ------------------------------
 
-data/dict_fr binary
+data/dict* binary
