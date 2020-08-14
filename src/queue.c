@@ -108,3 +108,18 @@ void printQueueAsChar(Queue queue) {
 
     putchar('\n');
 }
+
+char* queueToString(Queue queue) {
+    char* word = malloc(sizeof(char) * (getSize(queue)+1));
+
+    int i = 0;
+    while (!isEmpty(queue)) {
+        char* c = (char*) dequeue(queue);
+        word[i] = *c;
+        free(c);
+        i++;
+    }
+    word[i] = '\0';
+
+    return word;
+}

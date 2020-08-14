@@ -25,19 +25,7 @@ void retrieveStdin(char*** input, int* nbWords) {
     int n = 0;
     while (!isEmpty(allQ)) {
         wordQ = dequeue(allQ);
-
-        char* wordC = malloc(sizeof(char) * (getSize(wordQ)+1));
-
-        int i = 0;
-        while (!isEmpty(wordQ)) {
-            char* c = (char*) dequeue(wordQ);
-            wordC[i] = *c;
-            free(c);
-            i++;
-        }
-        wordC[i] = '\0';
-        (*input)[n] = wordC;
-
+        (*input)[n] = queueToString(wordQ);
         deleteQueue(wordQ);
 
         n++;

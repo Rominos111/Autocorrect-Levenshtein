@@ -124,4 +124,12 @@ void printQueueAsInt(Queue queue);
  */
 void printQueueAsChar(Queue queue);
 
+/**
+ * Transforme une Queue de char en string
+ *
+ * @param queue Queue de char
+ * @return Mot construit par cette Queue, se terminant par un <code>\0</code>
+ */
+char* queueToString(Queue queue);
+
 #endif //AUTOCORRECT_LEVENSHTEIN_QUEUE_H
